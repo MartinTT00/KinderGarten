@@ -18,16 +18,29 @@ namespace DataAccess
         {
         }
 
-        internal void Add(Kid kid)
-        {
-            throw new NotImplementedException();
-        }
+        //internal void Add(Kid kid)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        DbSet<Kid> Kids { get; set; }
-        DbSet<Activity> Activities { get; set; }
-        DbSet<Parent> Parents { get; set; }
-        DbSet<Location> Locations { get; set; }
-        DbSet<Group> Groups { get; set; }
+        //private DbSet<Kid> kids;
+
+        //private DbSet<Kid> GetKids()
+        //{
+        //    return kids;
+        //}
+
+        //private void SetKids(DbSet<Kid> value)
+        //{
+        //    kids = value;
+        //}
+
+
+        //DbSet<Kid> Kids { get; set; }
+        //DbSet<Activity> Activities { get; set; }
+        //DbSet<Parent> Parents { get; set; }
+        //DbSet<Location> Locations { get; set; }
+        //DbSet<Group> Groups { get; set; }
 
         internal object GetAll()
         {
@@ -43,6 +56,15 @@ namespace DataAccess
         public System.Data.Entity.DbSet<DataStructure.Location> Locations { get; set; }
 
         public System.Data.Entity.DbSet<DataStructure.Activity> Activities { get; set; }
+
+        public object GetKids()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 

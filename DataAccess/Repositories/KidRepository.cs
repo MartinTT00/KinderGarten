@@ -12,9 +12,67 @@ namespace DataAccess.Repositories
     public class KidRepository
     {
         private readonly KinderGartenDBContext kinderGartenDBContext = new KinderGartenDBContext();
- public void dasdasda()
-        {
 
+        public KidRepository(KinderGartenDBContext kinderGartenDBContext)
+        {
+            this.kinderGartenDBContext = kinderGartenDBContext;
         }
+        public void Create()
+        {
+           
+        }
+
+        public void Create(Kid kid)
+        {
+            kinderGartenDBContext.Kids.Add(kid);
+        }
+
+        public List<Kid> Read()
+        {
+            List<Kid> allKids = kinderGartenDBContext.Kids.ToList();
+            return allKids;
+        }
+
+          public Kid Update(int id)
+        {
+            Kid kid = new Kid();
+            kid = GetByID(id);
+            return kid;
+        }
+
+        public void Update(Kid kid)
+        {
+            kinderGartenDBContext.Entry(kid).State = EntityState.Modified;
+        }
+        public Kid Delete(int? id)
+        {
+            Kid kid = new Kid();
+            kid = GetByID(id);
+            return kid;
+        }
+        public void Delete(int id)
+        {
+            Kid kid = new Kid();
+            kid = GetByID(id); kinderGartenDBContext.Kids.Remove(kid);
+        }
+
+        public List<Kid> GetAll()
+        {
+            List<Kid> allKids = kinderGartenDBContext.Kids.ToList();
+            return allKids;
+        }
+        public Kid GetByID(int id)
+        {
+            Kid kid = new Kid();
+            kid = kinderGartenDBContext.Kids.Find(id);
+            return kid;
+        }
+        public Kid GetByID(int? id)
+        {
+            Kid kid = new Kid();
+            kid = kinderGartenDBContext.Kids.Find(id);
+            return kid;
+        }
+
     }
 }

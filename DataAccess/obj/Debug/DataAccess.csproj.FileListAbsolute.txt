@@ -28,3 +28,4 @@ C:\Users\marti\source\repos\KinderGarten\DataAccess\bin\Debug\System.Web.Razor.x
 C:\Users\marti\source\repos\KinderGarten\DataAccess\bin\Debug\System.Web.WebPages.xml
 C:\Users\marti\source\repos\KinderGarten\DataAccess\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\marti\source\repos\KinderGarten\DataAccess\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\marti\source\repos\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.ChangingTheDBSets.resources
