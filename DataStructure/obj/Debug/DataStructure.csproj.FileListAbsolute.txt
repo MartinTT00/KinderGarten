@@ -4,3 +4,9 @@ C:\Users\marti\source\repos\KinderGarten\DataStructure\obj\Debug\DataStructure.c
 C:\Users\marti\source\repos\KinderGarten\DataStructure\obj\Debug\DataStructure.dll
 C:\Users\marti\source\repos\KinderGarten\DataStructure\obj\Debug\DataStructure.pdb
 C:\Users\marti\source\repos\KinderGarten\DataStructure\obj\Debug\DataStructure.csprojAssemblyReference.cache
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\bin\Debug\DataStructure.dll
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\bin\Debug\DataStructure.pdb
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\obj\Debug\DataStructure.csprojAssemblyReference.cache
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\obj\Debug\DataStructure.csproj.CoreCompileInputs.cache
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\obj\Debug\DataStructure.dll
+C:\Users\marti\Documents\GitHub\KinderGarten\DataStructure\obj\Debug\DataStructure.pdb

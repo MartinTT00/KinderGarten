@@ -9,7 +9,7 @@ namespace DataAccess.Repositories
     public class UnitOfWork
     {
         private GroupRepository groupRepository;
-        public GroupRepository GroupR
+        public GroupRepository GroupRepository
         {
             get
             {
@@ -23,7 +23,7 @@ namespace DataAccess.Repositories
 
 
         private KidRepository kidRepository;
-        public KidRepository KidR
+        public KidRepository KidRepository
         {
             get
             {
@@ -37,7 +37,7 @@ namespace DataAccess.Repositories
 
 
         private ActivityRepository activityRepository;
-        public ActivityRepository ActivityR
+        public ActivityRepository ActivityRepository
         {
             get
             {
@@ -51,7 +51,7 @@ namespace DataAccess.Repositories
 
 
         private ParentRepository parentRepository;
-        public ParentRepository ParentR
+        public ParentRepository ParentRepository
         {
             get
             {
@@ -66,7 +66,7 @@ namespace DataAccess.Repositories
 
 
         private LocationRepository locationRepository;
-        public LocationRepository LocationR
+        public LocationRepository LocationRepository
         {
             get
             {
@@ -106,7 +106,7 @@ namespace DataAccess.Repositories
             }
         }
         private static UnitOfWork uow; 
-        public UnitOfWork UOW
+        public static UnitOfWork UOW
         {
             get
             {

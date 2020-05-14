@@ -1,128 +1,64 @@
-﻿using System;
+﻿using DataAccess.Repositories;
+using DataStructure;
+using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DataAccess;
-using DataStructure;
 
 namespace KinderGarten.Controllers
 {
     public class ActivitiesController : Controller
     {
-        private KinderGartenDBContext db = new KinderGartenDBContext();
-
         // GET: Activities
         public ActionResult Index()
-        {
-            return View(db.Activities.ToList());
-        }
-
-        // GET: Activities/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Activity activity = db.Activities.Find(id);
-            if (activity == null)
-            {
-                return HttpNotFound();
-            }
-            return View(activity);
-        }
-
-        // GET: Activities/Create
-        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Activities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }   
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Activity activity)
+        public ActionResult Create(DataStructure.Activity activity)
         {
-            if (ModelState.IsValid)
-            {
-                db.Activities.Add(activity);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            UnitOfWork.UOW.ActivityRepository.Create(activity);
+            return RedirectToAction(nameof(Read));
 
-            return View(activity);
         }
 
-        // GET: Activities/Edit/5
-        public ActionResult Edit(int? id)
+        [HttpGet]
+        public ActionResult Read()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Activity activity = db.Activities.Find(id);
-            if (activity == null)
-            {
-                return HttpNotFound();
-            }
-            return View(activity);
+            List<DataStructure.Activity> allActivities = UnitOfWork.UOW.ActivityRepository.Read();
+            return View(allActivities);
         }
 
-        // POST: Activities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public ActionResult Update()
+        {
+            return View();
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Activity activity)
+        public ActionResult Update()
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(activity).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(activity);
         }
 
-        // GET: Activities/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpGet]
+        public ActionResult Delete()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Activity activity = db.Activities.Find(id);
-            if (activity == null)
-            {
-                return HttpNotFound();
-            }
-            return View(activity);
         }
 
-        // POST: Activities/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete()
         {
-            Activity activity = db.Activities.Find(id);
-            db.Activities.Remove(activity);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
