@@ -91,6 +91,7 @@
     <Compile Include="Repositories\KidRepository.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
     <Compile Include="Repositories\ParentRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
