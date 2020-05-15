@@ -28,9 +28,12 @@ namespace KinderGarten.Controllers
         public ActionResult Create(DataStructure.Activity activity)
         {
             UnitOfWork.UOW.ActivityRepository.Create(activity);
+            UnitOfWork.UOW.Save();
             return RedirectToAction(nameof(Read));
 
         }
+
+
 
         [HttpGet]
         public ActionResult Read()
@@ -39,25 +42,39 @@ namespace KinderGarten.Controllers
             return View(allActivities);
         }
 
+
+
         [HttpGet]
-        public ActionResult Update()
+        public ActionResult Update(int id)
         {
-            return View();
+            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Update(id);
+            return View(activity);
         }
 
         [HttpPost]
-        public ActionResult Update()
+        public ActionResult Update(DataStructure.Activity activity)
         {
+                
+           UnitOfWork.UOW.ActivityRepository.Update(activity);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
+
+
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
+            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
+            return View(activity);
         }
 
         [HttpPost]
-        public ActionResult Delete()
+        public ActionResult Delete(int id)
         {
+           DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
     }

@@ -48,10 +48,12 @@ namespace DataAccess.Repositories
             activity = GetByID(id);
             return activity;
         }
-        public void Delete(int id)
+        public Activity Delete(int id)
         {
             Activity activity = new Activity();
-            activity = GetByID(id); kinderGartenDBContext.Activities.Remove(activity);
+            activity = GetByID(id);
+            activity = kinderGartenDBContext.Activities.Remove(activity);
+            return activity;
         }
 
         public List<Activity> GetAll()
