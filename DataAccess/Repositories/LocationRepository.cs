@@ -49,10 +49,12 @@ namespace DataAccess.Repositories
             location = GetByID(id);
             return location;
         }
-        public void Delete(int id)
+        public Location Delete(int id)
         {
             Location location = new Location();
-            location = GetByID(id); kinderGartenDBContext.Locations.Remove(location);
+            location = GetByID(id); 
+            kinderGartenDBContext.Locations.Remove(location);
+            return location;
         }
 
         public List<Location> GetAll()

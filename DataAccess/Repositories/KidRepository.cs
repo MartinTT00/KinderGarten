@@ -50,10 +50,12 @@ namespace DataAccess.Repositories
             kid = GetByID(id);
             return kid;
         }
-        public void Delete(int id)
+        public Kid Delete(int id)
         {
             Kid kid = new Kid();
-            kid = GetByID(id); kinderGartenDBContext.Kids.Remove(kid);
+            kid = GetByID(id); 
+            kinderGartenDBContext.Kids.Remove(kid);
+            return kid;
         }
 
         public List<Kid> GetAll()

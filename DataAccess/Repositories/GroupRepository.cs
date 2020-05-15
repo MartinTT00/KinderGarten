@@ -47,10 +47,12 @@ namespace DataAccess.Repositories
             group = GetByID(id);
             return group;
         }
-        public void Delete(int id)
+        public Group Delete(int id)
         {
             Group group = new Group();
-            group = GetByID(id); kinderGartenDBContext.Groups.Remove(group);
+            group = GetByID(id); 
+            kinderGartenDBContext.Groups.Remove(group);
+            return group;
         }
 
         public List<Group> GetAll()

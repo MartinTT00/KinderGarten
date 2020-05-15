@@ -1,128 +1,81 @@
-﻿using System;
+﻿using DataAccess.Repositories;
+using DataStructure;
+using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DataAccess;
-using DataStructure;
 
 namespace KinderGarten.Controllers
 {
     public class ParentsController : Controller
     {
-        private KinderGartenDBContext db = new KinderGartenDBContext();
-
-        // GET: Parents
+        // GET: Activities
         public ActionResult Index()
         {
-            return View(db.Parents.ToList());
+            return View();
         }
 
-        // GET: Parents/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Parent parent = db.Parents.Find(id);
-            if (parent == null)
-            {
-                return HttpNotFound();
-            }
-            return View(parent);
-        }
-
-        // GET: Parents/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Parents/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,EGN,Sex,PhoneNumber")] Parent parent)
+        public ActionResult Create(Parent parent)
         {
-            if (ModelState.IsValid)
-            {
-                db.Parents.Add(parent);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            UnitOfWork.UOW.ParentRepository.Create(parent);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
 
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Read()
+        {
+            List<Parent> allParents = UnitOfWork.UOW.ParentRepository.Read();
+            return View(allParents);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            Parent parent = UnitOfWork.UOW.ParentRepository.Update(id);
             return View(parent);
         }
 
-        // GET: Parents/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Parent parent = db.Parents.Find(id);
-            if (parent == null)
-            {
-                return HttpNotFound();
-            }
-            return View(parent);
-        }
-
-        // POST: Parents/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,EGN,Sex,PhoneNumber")] Parent parent)
+        public ActionResult Update(Parent parent)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(parent).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(parent);
+
+            UnitOfWork.UOW.ParentRepository.Update(parent);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
-        // GET: Parents/Delete/5
+
+
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Parent parent = db.Parents.Find(id);
-            if (parent == null)
-            {
-                return HttpNotFound();
-            }
+            Parent parent = UnitOfWork.UOW.ParentRepository.Delete(id);
             return View(parent);
         }
 
-        // POST: Parents/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            Parent parent = db.Parents.Find(id);
-            db.Parents.Remove(parent);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            DataStructure.Parent parent = UnitOfWork.UOW.ParentRepository.Delete(id);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

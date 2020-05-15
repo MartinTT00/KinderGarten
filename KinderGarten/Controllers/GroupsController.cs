@@ -1,128 +1,81 @@
-﻿using System;
+﻿using DataAccess.Repositories;
+using DataStructure;
+using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DataAccess;
-using DataStructure;
 
 namespace KinderGarten.Controllers
 {
     public class GroupsController : Controller
     {
-        private KinderGartenDBContext db = new KinderGartenDBContext();
-
-        // GET: Groups
+        // GET: Activities
         public ActionResult Index()
         {
-            return View(db.Groups.ToList());
+            return View();
         }
 
-        // GET: Groups/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Group group = db.Groups.Find(id);
-            if (group == null)
-            {
-                return HttpNotFound();
-            }
-            return View(group);
-        }
-
-        // GET: Groups/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Groups/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Group group)
+        public ActionResult Create(Group group)
         {
-            if (ModelState.IsValid)
-            {
-                db.Groups.Add(group);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            UnitOfWork.UOW.GroupRepository.Create(group);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
 
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Read()
+        {
+            List<Group> allGroups = UnitOfWork.UOW.GroupRepository.Read();
+            return View(allGroups);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Update(int id)
+        {
+            Group group = UnitOfWork.UOW.GroupRepository.Update(id);
             return View(group);
         }
 
-        // GET: Groups/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Group group = db.Groups.Find(id);
-            if (group == null)
-            {
-                return HttpNotFound();
-            }
-            return View(group);
-        }
-
-        // POST: Groups/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Group group)
+        public ActionResult Update(Group group)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(group).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(group);
+
+            UnitOfWork.UOW.GroupRepository.Update(group);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
-        // GET: Groups/Delete/5
+
+
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Group group = db.Groups.Find(id);
-            if (group == null)
-            {
-                return HttpNotFound();
-            }
+            Group group = UnitOfWork.UOW.GroupRepository.Delete(id);
             return View(group);
         }
 
-        // POST: Groups/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
-            Group group = db.Groups.Find(id);
-            db.Groups.Remove(group);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            DataStructure.Group group = UnitOfWork.UOW.GroupRepository.Delete(id);
+            UnitOfWork.UOW.Save();
+            return RedirectToAction(nameof(Read));
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

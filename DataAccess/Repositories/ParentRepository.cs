@@ -47,11 +47,13 @@ namespace DataAccess.Repositories
                 parent = GetByID(id);
                 return parent;
             }
-            public void Delete(int id)
+            public Parent Delete(int id)
             {
                 Parent parent = new Parent();
-                parent = GetByID(id); kinderGartenDBContext.Parents.Remove(parent);
-            }
+                parent = GetByID(id);
+                kinderGartenDBContext.Parents.Remove(parent);
+                return parent;
+        }
 
             public List<Parent> GetAll()
             {
