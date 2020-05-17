@@ -60,3 +60,4 @@ C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.csp
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.ChangeType.resources

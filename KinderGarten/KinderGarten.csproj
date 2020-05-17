@@ -242,33 +242,29 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Kids\Create.cshtml" />
     <Content Include="Views\Kids\Delete.cshtml" />
-    <Content Include="Views\Kids\Details.cshtml" />
-    <Content Include="Views\Kids\Edit.cshtml" />
-    <Content Include="Views\Kids\Index.cshtml" />
+    <Content Include="Views\Kids\Update.cshtml">
+      <BrowseToURL>~/Kids/Update</BrowseToURL>
+    </Content>
     <Content Include="Views\Groups\Create.cshtml" />
     <Content Include="Views\Groups\Delete.cshtml" />
-    <Content Include="Views\Groups\Details.cshtml" />
-    <Content Include="Views\Groups\Edit.cshtml" />
-    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Groups\Update.cshtml" />
     <Content Include="Views\Parents\Create.cshtml" />
     <Content Include="Views\Parents\Delete.cshtml" />
-    <Content Include="Views\Parents\Details.cshtml" />
-    <Content Include="Views\Parents\Edit.cshtml" />
-    <Content Include="Views\Parents\Index.cshtml" />
+    <Content Include="Views\Parents\Update.cshtml" />
     <Content Include="Views\Locations\Create.cshtml" />
     <Content Include="Views\Locations\Delete.cshtml" />
-    <Content Include="Views\Locations\Details.cshtml" />
-    <Content Include="Views\Locations\Edit.cshtml" />
-    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Locations\Update.cshtml" />
     <Content Include="Views\Activities\Create.cshtml" />
     <Content Include="Views\Activities\Delete.cshtml" />
-    <Content Include="Views\Activities\Details.cshtml" />
-    <Content Include="Views\Activities\Edit.cshtml" />
-    <Content Include="Views\Activities\Index.cshtml" />
+    <Content Include="Views\Activities\Update.cshtml" />
+    <Content Include="Views\Kids\Read.cshtml" />
+    <Content Include="Views\Groups\Read.cshtml" />
+    <Content Include="Views\Activities\Read.cshtml" />
+    <Content Include="Views\Parents\Read.cshtml" />
+    <Content Include="Views\Locations\Read.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Kid\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

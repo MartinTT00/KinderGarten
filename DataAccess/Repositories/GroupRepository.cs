@@ -1,6 +1,7 @@
 ﻿using DataStructure;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 
@@ -39,7 +40,7 @@ namespace DataAccess.Repositories
 
         public void Update(Group group)
         {
-            kinderGartenDBContext.Entry(group).State = EntityState.Modified;
+            kinderGartenDBContext.Groups.AddOrUpdate(group);
         }
         public Group Delete(int? id)
         {

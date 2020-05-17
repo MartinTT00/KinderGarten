@@ -52,7 +52,7 @@ namespace KinderGarten.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(Parent parent)
+        public ActionResult Update([Bind(Include = "Id, Name, EGN, Sex, PhoneNumber")]Parent parent)
         {
 
             UnitOfWork.UOW.ParentRepository.Update(parent);

@@ -1,6 +1,7 @@
 ﻿using DataStructure;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 
@@ -41,7 +42,7 @@ namespace DataAccess.Repositories
 
         public void Update(Location location)
         {
-            kinderGartenDBContext.Entry(location).State = EntityState.Modified;
+            kinderGartenDBContext.Locations.AddOrUpdate(location);
         }
         public Location Delete(int? id)
         {

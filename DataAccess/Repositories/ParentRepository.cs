@@ -1,6 +1,7 @@
 ﻿using DataStructure;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 
@@ -39,8 +40,8 @@ namespace DataAccess.Repositories
 
             public void Update(Parent parent)
             {
-                kinderGartenDBContext.Entry(parent).State = EntityState.Modified;
-            }
+                    kinderGartenDBContext.Parents.AddOrUpdate(parent);
+        }
             public Parent Delete(int? id)
             {
                 Parent parent = new Parent();
