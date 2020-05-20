@@ -11,7 +11,7 @@ namespace DataStructure
         public int Id { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        Parent Parents { get; set; }
-        Kid Kids { get; set; }
+        public Parent Parents { get; set; }
+        public Kid Kids { get; set; }
     }
 }

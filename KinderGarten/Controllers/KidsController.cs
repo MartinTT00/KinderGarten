@@ -1,5 +1,7 @@
-﻿using DataAccess.Repositories;
+﻿using DataAccess;
+using DataAccess.Repositories;
 using DataStructure;
+using DataStructure.ViewModels;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
@@ -21,12 +23,27 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            List<Parent> allParents = UnitOfWork.UOW.ParentRepository.GetAll();
+            SelectList selectParentList = new SelectList(allParents, "Id", "Name");
+            ViewData["select"] = selectParentList;
+            //ViewBag.select = selectParentList;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Kid kid)
+        public ActionResult Create(KidViewModel kidViewModel)
         {
+            List<Parent> allParents = UnitOfWork.UOW.ParentRepository.GetAll();
+            Parent currentParent = allParents.Where(x => x.Id == kidViewModel.ParentId).FirstOrDefault();
+            Kid kid = new Kid()
+            {
+                Id = kidViewModel.Id,
+                Name = kidViewModel.Name,
+                Parents = currentParent,
+                Age = kidViewModel.Age,
+                EGN = kidViewModel.EGN,
+                Sex = kidViewModel.Sex
+            };
             UnitOfWork.UOW.KidRepository.Create(kid);
             UnitOfWork.UOW.Save();
             return RedirectToAction(nameof(Read));
@@ -36,9 +53,16 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
-        public ActionResult Read()
+        public ActionResult Read(/*KidViewModel kidViewModel*/)
         {
             List<Kid> allKids = UnitOfWork.UOW.KidRepository.Read();
+            //List<Parent> allParents = UnitOfWork.UOW.ParentRepository.GetAll();
+            //Parent currentParent = allParents.Where(x => x.Id == kidViewModel.ParentId).FirstOrDefault();
+            //Kid kid = new Kid()
+            //{
+            //    Parents = currentParent,
+            //    Name = kidViewModel.Name,
+            //};
             return View(allKids);
         }
 
@@ -76,5 +100,7 @@ namespace KinderGarten.Controllers
             return RedirectToAction(nameof(Read));
         }
 
+
     }
+
 }

@@ -14,12 +14,11 @@ namespace DataStructure
 
         public int Age { get; set; }
 
-        public int EGN { get; set; }
+        public string EGN { get; set; }
         public string Sex { get; set; }
-
-        List<Activity> Activities { get; set; }
-        Parent Parents { get; set; }
-        List<Location> Locations { get; set; }
-        Group Groups { get; set; }
+        public List<Activity> Activities { get; set; }
+        public Parent Parents { get; set; }
+        public List<Location> Locations { get; set; }
+        public Group Groups { get; set; }
     }
 }

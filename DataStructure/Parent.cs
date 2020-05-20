@@ -15,7 +15,7 @@ namespace DataStructure
 
         public string PhoneNumber { get; set; }
 
-        List<Kid> Kids { get; set; }
-        List<Location> Locations { get; set; }
+        public List<Kid> Kids { get; set; }
+        public List<Location> Locations { get; set; }
     }
 }

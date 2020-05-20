@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
         {
             this.kinderGartenDBContext = kinderGartenDBContext;
         }
-        public void Create()
+        public void Create(DataStructure.ViewModels.KidViewModel kidViewModel)
         {
            
         }

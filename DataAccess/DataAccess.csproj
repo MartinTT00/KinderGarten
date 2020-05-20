@@ -88,6 +88,14 @@
     <Compile Include="Migrations\202005170119136_ChangeType.Designer.cs">
       <DependentUpon>202005170119136_ChangeType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005171527474_ChangeType2.cs" />
+    <Compile Include="Migrations\202005171527474_ChangeType2.Designer.cs">
+      <DependentUpon>202005171527474_ChangeType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005192336297_Change3.cs" />
+    <Compile Include="Migrations\202005192336297_Change3.Designer.cs">
+      <DependentUpon>202005192336297_Change3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ActivityRepository.cs" />
@@ -119,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005170119136_ChangeType.resx">
       <DependentUpon>202005170119136_ChangeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005171527474_ChangeType2.resx">
+      <DependentUpon>202005171527474_ChangeType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005192336297_Change3.resx">
+      <DependentUpon>202005192336297_Change3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
