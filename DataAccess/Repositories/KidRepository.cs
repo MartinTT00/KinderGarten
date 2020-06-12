@@ -28,7 +28,7 @@ namespace DataAccess.Repositories
             kinderGartenDBContext.Kids.Add(kid);
         }
 
-        public List<Kid> Read()
+        public List<Kid> Index()
         {
             List<Kid> allKids = kinderGartenDBContext.Kids.ToList();
             return allKids;

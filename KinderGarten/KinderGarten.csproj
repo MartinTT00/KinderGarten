@@ -256,7 +256,7 @@
     <Content Include="Views\Activities\Create.cshtml" />
     <Content Include="Views\Activities\Delete.cshtml" />
     <Content Include="Views\Activities\Update.cshtml" />
-    <Content Include="Views\Kids\Read.cshtml" />
+    <Content Include="Views\Kids\Index.cshtml" />
     <Content Include="Views\Groups\Read.cshtml" />
     <Content Include="Views\Activities\Read.cshtml" />
     <Content Include="Views\Parents\Read.cshtml" />

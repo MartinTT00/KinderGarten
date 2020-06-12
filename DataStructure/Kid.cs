@@ -19,6 +19,6 @@ namespace DataStructure
         public List<Activity> Activities { get; set; }
         public Parent Parents { get; set; }
         public List<Location> Locations { get; set; }
-        public Group Groups { get; set; }
+        public virtual Group Groups { get; set; }
     }
 }

@@ -105,7 +105,7 @@ namespace DataAccess.Repositories
                 return kinderGartenDBContext;
             }
         }
-        private static UnitOfWork uow; 
+        public static UnitOfWork uow; 
         public static UnitOfWork UOW
         {
             get
