@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,20 @@ namespace DataStructure.ViewModels
 
         public int Id { get; set; }
 
-            public string Name { get; set; }
+        [Required]
+        public string Name { get; set; }
 
-            public int Age { get; set; }
+        [Required]
+        public int Age { get; set; }
 
-            public string EGN { get; set; }
-            public string Sex { get; set; }
+        [Required]
+        [MinLength(6)]
+        [MaxLength(10)]
+        public string EGN { get; set; }
+
+        [Required]
+        public string Sex { get; set; }
+
             public List<Activity> Activities { get; set; }
             public int ParentId { get; set; }
             public List<Location> Locations { get; set; }

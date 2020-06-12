@@ -224,3 +224,5 @@ C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten
 C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten.csproj.CopyComplete
 C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten.dll
 C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten.pdb
+C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten.Migrations.InitialCreate.resources
+C:\Users\marti\Documents\GitHub\KinderGarten\KinderGarten\obj\Debug\KinderGarten.csproj.GenerateResource.cache

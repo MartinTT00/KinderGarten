@@ -178,6 +178,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006110845270_InitialCreate.cs" />
+    <Compile Include="Migrations\202006110845270_InitialCreate.Designer.cs">
+      <DependentUpon>202006110845270_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -262,6 +267,7 @@
     <Content Include="Views\Parents\Read.cshtml" />
     <Content Include="Views\Locations\Read.cshtml" />
     <Content Include="Views\Kids\Create.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +294,11 @@
       <Project>{88185501-5bfa-496b-ae36-52f2bf2d8b4d}</Project>
       <Name>DataStructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006110845270_InitialCreate.resx">
+      <DependentUpon>202006110845270_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

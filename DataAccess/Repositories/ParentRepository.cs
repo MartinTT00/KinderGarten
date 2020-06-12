@@ -41,7 +41,7 @@ namespace DataAccess.Repositories
             public void Update(Parent parent)
             {
                     kinderGartenDBContext.Parents.AddOrUpdate(parent);
-        }
+            }
             public Parent Delete(int? id)
             {
                 Parent parent = new Parent();

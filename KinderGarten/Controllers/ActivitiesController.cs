@@ -13,15 +13,22 @@ namespace KinderGarten.Controllers
     public class ActivitiesController : Controller
     {
         // GET: Activities
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }   
 
         [HttpPost]
@@ -38,8 +45,15 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Read()
         {
-            List<DataStructure.Activity> allActivities = UnitOfWork.UOW.ActivityRepository.Read();
+            if (User.Identity.IsAuthenticated)
+            {
+                List<DataStructure.Activity> allActivities = UnitOfWork.UOW.ActivityRepository.Read();
             return View(allActivities);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
 
@@ -47,8 +61,15 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Update(id);
+            if (User.Identity.IsAuthenticated)
+            {
+                DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Update(id);
             return View(activity);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
@@ -65,8 +86,15 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
+            if (User.Identity.IsAuthenticated)
+            {
+                DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
             return View(activity);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]

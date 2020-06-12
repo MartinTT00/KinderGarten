@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DataStructure.Parent>
 
 @{
-    ViewBag.Title = "Read";
+    ViewBag.Title = "Index";
 }
 
 <h2>Read</h2>
@@ -27,23 +27,26 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EGN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sex)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EGN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Update", "Update", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+    }
     </tr>
 }
 

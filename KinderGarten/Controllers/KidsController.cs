@@ -22,7 +22,7 @@ namespace KinderGarten.Controllers
         //}
         public UnitOfWork uow = UnitOfWork.UOW;
 
-
+        
         [HttpGet]
         public ActionResult Create()
         {
@@ -69,28 +69,41 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<Kid> allKids = UnitOfWork.UOW.KidRepository.Index();
-            //List<Parent> allParents = UnitOfWork.UOW.ParentRepository.GetAll();
-            //Parent currentParent = allParents.Where(x => x.Id == kidViewModel.ParentId).FirstOrDefault();
-            //Kid kid = new Kid()
-            //{
-            //    Parents = currentParent,
-            //    Name = kidViewModel.Name,
-            //};
-            return View(allKids);
+            if (User.Identity.IsAuthenticated)
+            {
+                List<Kid> allKids = UnitOfWork.UOW.KidRepository.Index();
+                //List<Parent> allParents = UnitOfWork.UOW.ParentRepository.GetAll();
+                //Parent currentParent = allParents.Where(x => x.Id == kidViewModel.ParentId).FirstOrDefault();
+                //Kid kid = new Kid()
+                //{
+                //    Parents = currentParent,
+                //    Name = kidViewModel.Name,
+                //};
+                return View(allKids);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
-
 
 
         [HttpGet]
         public ActionResult Update(int id)
         {
-            Kid kid = UnitOfWork.UOW.KidRepository.GetByID(id);
+            if (User.Identity.IsAuthenticated)
+            {
+                Kid kid = UnitOfWork.UOW.KidRepository.GetByID(id);
             List<Group> allGroups = uow.GroupRepository.GetAll();
             SelectList selectGroupList = new SelectList(allGroups, "ID", "Name");
             ViewData["Groups"] = selectGroupList;
             KidViewModel kidViewModel = new KidViewModel(kid);
             return View(kidViewModel);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
@@ -126,8 +139,15 @@ namespace KinderGarten.Controllers
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            Kid kid = UnitOfWork.UOW.KidRepository.Delete(id);
+            if (User.Identity.IsAuthenticated)
+            {
+                Kid kid = UnitOfWork.UOW.KidRepository.Delete(id);
             return View(kid);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]

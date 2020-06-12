@@ -64,3 +64,4 @@ C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Mig
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.ChangeType2.resources
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.Change3.resources
 C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.addedlazyloadingtothekidsmodel.resources
+C:\Users\marti\Documents\GitHub\KinderGarten\DataAccess\obj\Debug\DataAccess.Migrations.setrequiredonmodels.resources

@@ -30,27 +30,31 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Groups.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EGN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sex)
+    </td>
+
+    @if (User.IsInRole("Admin"))
+    {
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Groups.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EGN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-        <td>
-            @Html.ActionLink("Update", "Update", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    }
+</tr>
 }
 
 </table>
