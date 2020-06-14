@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Kindergarten Moon's activities</h2>
+<h2>Kindergarten MooN's activities</h2>
 
     @if (User.IsInRole("Admin"))
          {
@@ -12,28 +12,30 @@
         @Html.ActionLink("Create New", "Create")
        </p>
          }
-    <table class="table">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+    If you would like to sign in your kid to some of the activities, please contact your administration from the button Contact!
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                }
-            </tr>
-        }
+            }
+        </tr>
+    }
 
-    </table>
+</table>
+
+
