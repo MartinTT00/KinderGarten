@@ -34,23 +34,11 @@ namespace DataAccess.Repositories
             return allKids;
         }
 
-          public Kid Update(int id)
-        {
-            Kid kid = new Kid();
-            kid = GetByID(id);
-            return kid;
-        }
-
         public void Update(Kid kid)
         {
             kinderGartenDBContext.Kids.AddOrUpdate(kid);
         }
-        public Kid Delete(int? id)
-        {
-            Kid kid = new Kid();
-            kid = GetByID(id);
-            return kid;
-        }
+
         public Kid Delete(int id)
         {
             Kid kid = new Kid();
@@ -65,12 +53,6 @@ namespace DataAccess.Repositories
             return allKids;
         }
         public Kid GetByID(int id)
-        {
-            Kid kid = new Kid();
-            kid = kinderGartenDBContext.Kids.Find(id);
-            return kid;
-        }
-        public Kid GetByID(int? id)
         {
             Kid kid = new Kid();
             kid = kinderGartenDBContext.Kids.Find(id);

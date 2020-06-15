@@ -43,12 +43,7 @@ namespace DataAccess.Repositories
         {
             kinderGartenDBContext.Activities.AddOrUpdate(activity);
         }
-        public Activity Delete(int? id)
-        {
-            Activity activity = new Activity();
-            activity = GetByID(id);
-            return activity;
-        }
+       
         public Activity Delete(int id)
         {
             Activity activity = new Activity();
@@ -63,12 +58,6 @@ namespace DataAccess.Repositories
             return allActivities;
         }
         public Activity GetByID(int id)
-        {
-            Activity activity = new Activity();
-            activity = kinderGartenDBContext.Activities.Find(id);
-            return activity;
-        }
-        public Activity GetByID(int? id)
         {
             Activity activity = new Activity();
             activity = kinderGartenDBContext.Activities.Find(id);

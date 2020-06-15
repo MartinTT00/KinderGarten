@@ -12,23 +12,12 @@ namespace KinderGarten.Controllers
 {
     public class ActivitiesController : Controller
     {
-        // GET: Activities
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
-            if (User.Identity.IsAuthenticated)
-            {
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }   
 
         [HttpPost]
@@ -37,39 +26,27 @@ namespace KinderGarten.Controllers
             UnitOfWork.UOW.ActivityRepository.Create(activity);
             UnitOfWork.UOW.Save();
             return RedirectToAction(nameof(Read));
-
         }
 
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Read()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                List<DataStructure.Activity> allActivities = UnitOfWork.UOW.ActivityRepository.Read();
-            return View(allActivities);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            List<DataStructure.Activity> allActivities = UnitOfWork.UOW.ActivityRepository.Read();
+            return View(allActivities);     
         }
 
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Update(int id)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Update(id);
+            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Update(id);
             return View(activity);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            
         }
 
         [HttpPost]
@@ -77,32 +54,18 @@ namespace KinderGarten.Controllers
         {
                 
            UnitOfWork.UOW.ActivityRepository.Update(activity);
-            UnitOfWork.UOW.Save();
-            return RedirectToAction(nameof(Read));
+           UnitOfWork.UOW.Save();
+           return RedirectToAction(nameof(Read));
         }
-
-
 
         [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
-            return View(activity);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
-           DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
+            DataStructure.Activity activity = UnitOfWork.UOW.ActivityRepository.Delete(id);
             UnitOfWork.UOW.Save();
             return RedirectToAction(nameof(Read));
+
         }
 
     }

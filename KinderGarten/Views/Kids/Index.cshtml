@@ -49,10 +49,11 @@
 
     @if (User.IsInRole("Admin"))
     {
-        <td>
-            @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
+<td>
+    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    @*@Html.ActionLink("Delete", "Delete", "Kids", new { id = item.Id}, new { onclick = "return confirm('Are you sure you to delete this Kid?');", @class = "btn btn-danger btn-sm" })*@
+</td>
     }
 </tr>
 }

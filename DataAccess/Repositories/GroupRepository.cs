@@ -42,12 +42,7 @@ namespace DataAccess.Repositories
         {
             kinderGartenDBContext.Groups.AddOrUpdate(group);
         }
-        public Group Delete(int? id)
-        {
-            Group group = new Group();
-            group = GetByID(id);
-            return group;
-        }
+
         public Group Delete(int id)
         {
             Group group = new Group();
@@ -62,12 +57,6 @@ namespace DataAccess.Repositories
             return allGroups;
         }
         public Group GetByID(int id)
-        {
-            Group group = new Group();
-            group = kinderGartenDBContext.Groups.Find(id);
-            return group;
-        }
-        public Group GetByID(int? id)
         {
             Group group = new Group();
             group = kinderGartenDBContext.Groups.Find(id);

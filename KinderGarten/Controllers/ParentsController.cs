@@ -12,13 +12,13 @@ namespace KinderGarten.Controllers
 {
     public class ParentsController : Controller
     {
-        // GET: Activities
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -36,6 +36,7 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Read()
         {
             List<Parent> allParents = UnitOfWork.UOW.ParentRepository.Read();
@@ -45,6 +46,7 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Update(int id)
         {
             Parent parent = UnitOfWork.UOW.ParentRepository.Update(id);
@@ -60,16 +62,8 @@ namespace KinderGarten.Controllers
             return RedirectToAction(nameof(Read));
         }
 
-
-
         [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            Parent parent = UnitOfWork.UOW.ParentRepository.Delete(id);
-            return View(parent);
-        }
-
-        [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             DataStructure.Parent parent = UnitOfWork.UOW.ParentRepository.Delete(id);

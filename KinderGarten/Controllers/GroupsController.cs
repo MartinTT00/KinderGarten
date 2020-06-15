@@ -12,23 +12,12 @@ namespace KinderGarten.Controllers
 {
     public class GroupsController : Controller
     {
-        // GET: Activities
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
-            if (User.Identity.IsAuthenticated)
-            {
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
         }
 
         [HttpPost]
@@ -39,38 +28,24 @@ namespace KinderGarten.Controllers
             return RedirectToAction(nameof(Read));
         }
 
-        
-
-
 
         [HttpGet]
+        [Authorize]
         public ActionResult Read()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                List<Group> allGroups = UnitOfWork.UOW.GroupRepository.Read();
+            List<Group> allGroups = UnitOfWork.UOW.GroupRepository.Read();
             return View(allGroups);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
         }
 
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Update(int id)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
+        {   
                 Group group = UnitOfWork.UOW.GroupRepository.Update(id);
-            return View(group);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+                return View(group);      
         }
 
         [HttpPost]
@@ -82,23 +57,8 @@ namespace KinderGarten.Controllers
             return RedirectToAction(nameof(Read));
         }
 
-
-
         [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                Group group = UnitOfWork.UOW.GroupRepository.Delete(id);
-            return View(group);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             DataStructure.Group group = UnitOfWork.UOW.GroupRepository.Delete(id);
@@ -108,11 +68,12 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Details(int id)
         {
             List<Kid> allKids = UnitOfWork.UOW.KidRepository.GetAll();
      
-            Group group = UnitOfWork.uow.GroupRepository.GetByID(id);
+            Group group = UnitOfWork.UOW.GroupRepository.GetByID(id);
             List<Kid> kidsInTheGroup = allKids.Where(x => x.Groups.Id == group.Id).ToList();
             group.Kids = kidsInTheGroup;
             return View(group);

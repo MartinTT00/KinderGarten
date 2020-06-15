@@ -18,30 +18,6 @@ namespace KinderGarten.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
-
-        //public AccountController()
-        //{
-        //}
-
-        //public AccountController(ApplicationUserManager userManager,ApplicationSignInManager signInManager,ApplicationRoleManager roleMagnager)
-        //{
-        //    UserManager = userManager;
-        //    SignInManager = signInManager;
-        //    RoleManager = roleMagnager;
-        //}
-
-        //public ApplicationRoleManager RoleManager
-        //{
-        //    get
-        //    {
-        //        return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-        //    }
-        //    private set
-        //    {
-        //        _roleManager = value;
-        //    }
-        //}
 
 
 
@@ -502,11 +478,6 @@ namespace KinderGarten.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-
-        private class ApplicationRoleManager
-        {
-            internal readonly IEnumerable<object> Roles;
-        }
-        #endregion
     }
 }
+#endregion

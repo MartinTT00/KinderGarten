@@ -15,10 +15,6 @@ namespace DataAccess.Repositories
             {
                 this.kinderGartenDBContext = kinderGartenDBContext;
             }
-            public void Create()
-            {
-
-            }
 
             public void Create(Parent parent)
             {
@@ -42,19 +38,14 @@ namespace DataAccess.Repositories
             {
                     kinderGartenDBContext.Parents.AddOrUpdate(parent);
             }
-            public Parent Delete(int? id)
-            {
-                Parent parent = new Parent();
-                parent = GetByID(id);
-                return parent;
-            }
+
             public Parent Delete(int id)
             {
                 Parent parent = new Parent();
                 parent = GetByID(id);
                 kinderGartenDBContext.Parents.Remove(parent);
                 return parent;
-        }
+             }
 
             public List<Parent> GetAll()
             {
@@ -64,12 +55,6 @@ namespace DataAccess.Repositories
             public Parent GetByID(int id)
             {
             Parent parent = new Parent();
-                parent = kinderGartenDBContext.Parents.Find(id);
-                return parent;
-            }
-            public Parent GetByID(int? id)
-            {
-                Parent parent = new Parent();
                 parent = kinderGartenDBContext.Parents.Find(id);
                 return parent;
             }

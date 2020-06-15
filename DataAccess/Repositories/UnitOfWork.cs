@@ -90,8 +90,6 @@ namespace DataAccess.Repositories
         }
 
 
-
-
         private KinderGartenDBContext kinderGartenDBContext;
 
         public KinderGartenDBContext KGdbContex
@@ -105,7 +103,7 @@ namespace DataAccess.Repositories
                 return kinderGartenDBContext;
             }
         }
-        public static UnitOfWork uow; 
+        private static UnitOfWork uow; 
         public static UnitOfWork UOW
         {
             get

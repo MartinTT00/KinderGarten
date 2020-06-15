@@ -12,13 +12,13 @@ namespace KinderGarten.Controllers
 {
     public class LocationsController : Controller
     {
-        // GET: Activities
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -36,15 +36,15 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Read()
         {
             List<Location> allLocations = UnitOfWork.UOW.LocationRepository.Read();
             return View(allLocations);
         }
 
-
-
         [HttpGet]
+        [Authorize]
         public ActionResult Update(int id)
         {
             Location location = UnitOfWork.UOW.LocationRepository.Update(id);
@@ -63,13 +63,7 @@ namespace KinderGarten.Controllers
 
 
         [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            Location location = UnitOfWork.UOW.LocationRepository.Delete(id);
-            return View(location);
-        }
-
-        [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             DataStructure.Location location = UnitOfWork.UOW.LocationRepository.Delete(id);

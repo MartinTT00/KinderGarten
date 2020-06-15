@@ -44,12 +44,7 @@ namespace DataAccess.Repositories
         {
             kinderGartenDBContext.Locations.AddOrUpdate(location);
         }
-        public Location Delete(int? id)
-        {
-            Location location = new Location();
-            location = GetByID(id);
-            return location;
-        }
+
         public Location Delete(int id)
         {
             Location location = new Location();
@@ -64,12 +59,6 @@ namespace DataAccess.Repositories
             return allLocations;
         }
         public Location GetByID(int id)
-        {
-            Location location = new Location();
-            location = kinderGartenDBContext.Locations.Find(id);
-            return location;
-        }
-        public Location GetByID(int? id)
         {
             Location location = new Location();
             location = kinderGartenDBContext.Locations.Find(id);
